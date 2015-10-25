@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	    <!--Tools > Sublime Server >for Sublime Server  http://localhost:8080/       -->
+		<script src="http://livejs.com/live.js"></script>
+
+		<!-- Meta Tags -->
+		<meta charset="UTF-8">
+		<title>Brandon's Currency Converter</title>
+
+		<!-- Stylesheets -->
+		<link href='http://fonts.googleapis.com/css?family=Lato:400,700,900,900italic' rel='stylesheet' type='text/css'>
+
+		
+		<link href="css/reset.css" rel="stylesheet"/>
+		<link href="css/style.css" rel="stylesheet"/>
+	
+
+		<!-- Images/Favicon -->
+		<link rel="icon" type="image/ico" href="favicon.ico" />
+	</head>
+	<body>
+		<section>
+			<h1 id="myName">Brandon's</h1>
+			<h1>Currency Converter</h1>
+
+			<!-- Starting Currency -->
+			<div id="startingCurrency">
+				<select class="dropDownMenu">
+					<option>US Dollar</option>
+					<option>Euro</option>
+					<option>Peruvian Nuevo Sol</option>
+					<option>Bit Coin</option>
+				</select>
+				<input class="textInput" type="text"></input>
+			</div>
+
+			<!-- Target Currency -->
+			<div id="targetCurrency">
+				<select class="dropDownMenu">
+					<option>US Dollar</option>
+					<option>Euro</option>
+					<option>Peruvian Nuevo Sol</option>
+					<option>Bit Coin</option>
+				</select>
+				<input class="textInput" type="text"></input>
+			</div>
+
+			<!-- Submit Button -->
+			<input type="submit" value="Convert!"></input>
+
+			
+
+			<!-- Questions -->
+			<p><u>Questions</u></p>
+			<ol>
+				<li>How do I make the drop down menus' first element read "Starting Currency?"</li>
+				<li>Was a form the best way to go about this?  I recal we compared forms and another possibility awhile back but I forget which is best in this situation & my internet is VERY slow right now.</li>
+				<li>The whole thing in one form or just the input text field and the button?</li>
+			</ol>
+		</section>
+
+
+		<!-- JavaScript/jQuery -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="js/jquery-2.1.4.min.js">\x3C/script>')</script>
+		<script type="text/javascript" src="js/script.js"></script>
+	</body>
+</html>
