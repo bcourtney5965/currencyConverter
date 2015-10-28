@@ -3,6 +3,7 @@ $(document).ready(function() {
 
     $.getJSON( "https://openexchangerates.org/api/currencies.json", function( data ) {
         var items = [], startItems = [], targetItems = [];
+        var startingCurrency, targetCurrency;
         $.each( data, function( key, val ) {
               items.push( "<option id='" + key + "'>" + val + "</option>" );
         });
@@ -22,15 +23,26 @@ $(document).ready(function() {
               html: targetItems.join( "" )
         }).prependTo( "#targetCurrency" );
 
+        startingCurrency = $("#startingCurrency").val();
+
         $("form").on("submit",function(event){
         	event.preventDefault();
-        	var startingCurrency;
-        	startingCurrency = +$("#startingCurrencyText").val();
-        	if (startingCurrency.constructor === Number) {
-        		$("#targetCurrency").append("Works");
+        	var startingCurrencyText;
+        	startingCurrencyText = $("#startingCurrencyText").val();
+
+        	if ( (!!$.isNumeric(startingCurrencyText)) && (!($( "#startingCurrency > .dropDownMenu" ).val() === "Starting Currency")) && (!($( "#targetCurrency > .dropDownMenu" ).val() === "Target Currency")) ) {
+        		// alert("works!");
+        		$("#testingLabel").text("Works");
+        	} else {
+        		$("#testingLabel").text("Doesn't Work");
         	}
         });
 
     });
 
 });
+
+//There is an example that shows, but youmust know:
+	// 1.) Starting Currency
+	// 2.) Traget Currency
+	// 3.) Currency amount
