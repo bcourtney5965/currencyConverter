@@ -38,6 +38,17 @@ $(document).ready(function() {
         	}
         });
 
+        $.getJSON( "https://openexchangerates.org/api/latest.json?app_id=e6ab7a9ae6e04881a5c5a3d69da62dd7", function( data ) {
+            //console.log(data["rates"]);
+            // data["rates"].forEach(function(country){
+                // console.log(country);
+            // });
+            for (key in data["rates"]){
+                console.log(data["rates"][key])
+            }
+        });
+
+
     });
 
 });
