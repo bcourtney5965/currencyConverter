@@ -1,17 +1,16 @@
 $(document).ready(function() {
-    $("body").append('<p>If you\'re reading this - jQuery is connected.</p>');
-
+    var rates;
     $.getJSON( "https://openexchangerates.org/api/currencies.json", function( data ) {
         var items = [], startItems = [], targetItems = [];
         var startingCurrency, targetCurrency;
         $.each( data, function( key, val ) {
-              items.push( "<option id='" + key + "'>" + val + "</option>" );
+              items.push( "<option value='" + key + "'>" + val + "</option>" );
         });
         startItems  = items.slice(0);
         targetItems = items.slice(0);
  
-        startItems.unshift("<option id='startingCurrent'>Starting Currency</option>");
-        targetItems.unshift("<option id='startingCurrent'>Target Currency</option>");
+        startItems.unshift("<option value='startingCurrent'>Starting Currency</option>");
+        targetItems.unshift("<option value='targetCurrent'>Target Currency</option>");
 
         $( "<select/>", {
             "class": "dropDownMenu",
@@ -23,37 +22,45 @@ $(document).ready(function() {
               html: targetItems.join( "" )
         }).prependTo( "#targetCurrency" );
 
-        startingCurrency = $("#startingCurrency").val();
-
-        $("form").on("submit",function(event){
-        	event.preventDefault();
-        	var startingCurrencyText;
-        	startingCurrencyText = $("#startingCurrencyText").val();
-
-        	if ( (!!$.isNumeric(startingCurrencyText)) && (!($( "#startingCurrency > .dropDownMenu" ).val() === "Starting Currency")) && (!($( "#targetCurrency > .dropDownMenu" ).val() === "Target Currency")) ) {
-        		// alert("works!");
-        		$("#testingLabel").text("Works");
-        	} else {
-        		$("#testingLabel").text("Doesn't Work");
-        	}
-        });
-
-        $.getJSON( "https://openexchangerates.org/api/latest.json?app_id=e6ab7a9ae6e04881a5c5a3d69da62dd7", function( data ) {
-            //console.log(data["rates"]);
-            // data["rates"].forEach(function(country){
-                // console.log(country);
-            // });
-            for (key in data["rates"]){
-                console.log(data["rates"][key])
-            }
-        });
-
-
     });
 
+    $.getJSON( "https://openexchangerates.org/api/latest.json?app_id=e6ab7a9ae6e04881a5c5a3d69da62dd7", function( data) {
+        rates = data["rates"];
+    });
+
+    $("form").on("submit",function(event){
+        event.preventDefault();
+        var startingCurrency = $("#startingCurrency select.dropDownMenu").val();
+        var targetCurrency = $("#targetCurrency select.dropDownMenu").val();
+        var startingToDollarRate;
+        var targetToDollarRate;
+        var startingCurrencyText = $("#startingCurrencyText ").val();
+        var intraCurrencyRate;
+
+        // Verifies we have all needed info
+    	if ( (!!$.isNumeric(startingCurrencyText)) && (!($( "#startingCurrency > .dropDownMenu" ).val() === "Starting Currency")) && (!($( "#targetCurrency > .dropDownMenu" ).val() === "Target Currency")) ) { 
+
+      		// Currency to dollar rates
+            targetToDollarRate = rates[targetCurrency];
+            startingToDollarRate = rates[startingCurrency];
+
+            // If starting currency is US Currency
+            if (startingCurrency === "USD") {
+                // Display the Target/Dollar Rate 
+                $("#testingLabel").text((targetToDollarRate * startingCurrencyText).toFixed(2));
+            // If target currency is US Currency
+            } else if (targetCurrency === "USD") {
+                // Display the Starting/Dollar Rate 
+                $("#testingLabel").text((startingCurrencyText/startingToDollarRate).toFixed(2));
+            // If US currency is neither starting nor target 
+            } else {
+                // Intracurrency Converting Math
+                intraCurrencyRate = (1/startingToDollarRate) * targetToDollarRate;
+                $("#testingLabel").text((startingCurrencyText * intraCurrencyRate).toFixed(2));
+           }
+        } else {
+        	$("#testingLabel").text("Try again");
+        }
+    });
 });
 
-//There is an example that shows, but youmust know:
-	// 1.) Starting Currency
-	// 2.) Traget Currency
-	// 3.) Currency amount
