@@ -2,10 +2,58 @@ body {
 	background-color: #9DCFF5;
 }
 h1 {
-	horizontal-align: center; 
+	text-align: center;
 }
 
 #myName {
 	font-family: Brush Script MT,cursive;
-
+	margin-top: 8%;
 }
+#title {
+	font-family: sans-serif;
+	font-weight: 400;
+	margin-top: -1%;
+}
+
+#startingCurrency {
+	text-align: center;
+}
+
+#targetCurrency {
+	text-align: center;
+}
+
+form > input[type="submit"] {
+	height: 35px; 
+	width: 144px;
+	position:absolute;
+    top: 40%;
+    left: 46.5%;
+	background-color: #9B9B9B;
+	background-opacity: .65;
+	font-family: Helvetica, sans-serif;
+	font-style: oblique;
+	font-size: 120%;
+	font-weight: 500;
+	border-radius: 8px;
+	border-color: rgb(151, 151, 151, 100);  /*#979797;*/ 
+	border-width: 2px;
+}
+
+/*button color : */
+
+
+
+/*
+#myName {
+	display: inline-block;
+	text-align: right top;
+}
+input[type="radio"]
+input[type="checkbox"] {
+	width: auto;
+}
+.assortedWords {
+	text-align: center;
+}
+*/

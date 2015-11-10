@@ -9,8 +9,8 @@ $(document).ready(function() {
         startItems  = items.slice(0);
         targetItems = items.slice(0);
  
-        startItems.unshift("<option value='startingCurrent'>Starting Currency</option>");
-        targetItems.unshift("<option value='targetCurrent'>Target Currency</option>");
+        startItems.unshift("<option value='startingCurrency'>Starting Currency</option>");
+        targetItems.unshift("<option value='targetCurrency'>Target Currency</option>");
 
         $( "<select/>", {
             "class": "dropDownMenu",
@@ -38,8 +38,10 @@ $(document).ready(function() {
         var intraCurrencyRate;
 
         // Verifies we have all needed info
-    	if ( (!!$.isNumeric(startingCurrencyText)) && (!($( "#startingCurrency > .dropDownMenu" ).val() === "Starting Currency")) && (!($( "#targetCurrency > .dropDownMenu" ).val() === "Target Currency")) ) { 
-
+    	if ( (!!$.isNumeric(startingCurrencyText)) && 
+            ($( "#startingCurrency > .dropDownMenu" ).val() !== 'startingCurrency') && 
+            ($( "#targetCurrency > .dropDownMenu" ).val() !== 'targetCurrency') ) { 
+                
       		// Currency to dollar rates
             targetToDollarRate = rates[targetCurrency];
             startingToDollarRate = rates[startingCurrency];
