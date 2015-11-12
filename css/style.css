@@ -24,13 +24,13 @@ h1 {
 }
 
 form > input[type="submit"] {
-	height: 35px; 
+	height: 31px; 
 	width: 144px;
 	position:absolute;
     top: 40%;
     left: 46.5%;
 	background-color: #9B9B9B;
-	background-opacity: .65;
+	background-color: .65;
 	font-family: Helvetica, sans-serif;
 	font-style: oblique;
 	font-size: 120%;
