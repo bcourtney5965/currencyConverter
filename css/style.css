@@ -1,6 +1,7 @@
 body {
 	background-color: #9DCFF5;
 }
+
 h1 {
 	text-align: center;
 }
@@ -9,18 +10,34 @@ h1 {
 	font-family: Brush Script MT,cursive;
 	margin-top: 8%;
 }
+
 #title {
 	font-family: sans-serif;
 	font-weight: 400;
 	margin-top: -1%;
 }
 
-#startingCurrency {
-	text-align: center;
+label,
+#startingCurrencyText {
+	margin-top: 22px;
 }
 
-#targetCurrency {
-	text-align: center;
+#targetCur,
+label {
+	margin-left: 10px;
+}
+
+form {
+	width: 40%;
+	margin: 0 auto;
+}
+
+form input {
+	width: 258px;
+}
+
+select {
+	cursor: pointer;
 }
 
 form > input[type="submit"] {
@@ -29,31 +46,13 @@ form > input[type="submit"] {
 	position:absolute;
     top: 40%;
     left: 46.5%;
-	background-color: #9B9B9B;
-	background-color: .65;
+    background-color: rgba(155,155,155,0.65);
 	font-family: Helvetica, sans-serif;
 	font-style: oblique;
 	font-size: 120%;
 	font-weight: 500;
+	border: solid;
 	border-radius: 8px;
-	border-color: rgb(151, 151, 151, 100);  /*#979797;*/ 
+	border-color: #979797;
 	border-width: 2px;
 }
-
-/*button color : */
-
-
-
-/*
-#myName {
-	display: inline-block;
-	text-align: right top;
-}
-input[type="radio"]
-input[type="checkbox"] {
-	width: auto;
-}
-.assortedWords {
-	text-align: center;
-}
-*/

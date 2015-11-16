@@ -12,15 +12,8 @@ $(document).ready(function() {
         startItems.unshift("<option value='startingCurrency'>Starting Currency</option>");
         targetItems.unshift("<option value='targetCurrency'>Target Currency</option>");
 
-        $( "<select/>", {
-            "class": "dropDownMenu",
-            html: startItems.join( "" )
-        }).prependTo( "#startingCurrency" );
-
-        $( "<select/>", {
-            "class": "dropDownMenu",
-              html: targetItems.join( "" )
-        }).prependTo( "#targetCurrency" );
+        $("#startCur").html(startItems.join( "" ));
+        $("#targetCur").html(targetItems.join( "" ));
 
     });
 
@@ -30,8 +23,8 @@ $(document).ready(function() {
 
     $("form").on("submit",function(event){
         event.preventDefault();
-        var startingCurrency = $("#startingCurrency select.dropDownMenu").val();
-        var targetCurrency = $("#targetCurrency select.dropDownMenu").val();
+        var startingCurrency = $("#startCur").val();
+        var targetCurrency = $("#targetCur").val();
         var startingToDollarRate;
         var targetToDollarRate;
         var startingCurrencyText = $("#startingCurrencyText ").val();
@@ -39,8 +32,8 @@ $(document).ready(function() {
 
         // Verifies we have all needed info
     	if ( (!!$.isNumeric(startingCurrencyText)) && 
-            ($( "#startingCurrency > .dropDownMenu" ).val() !== 'startingCurrency') && 
-            ($( "#targetCurrency > .dropDownMenu" ).val() !== 'targetCurrency') ) { 
+            ($( "#startCur" ).val() !== 'startingCurrency') && 
+            ($( "#targetCur" ).val() !== 'targetCurrency') ) { 
                 
       		// Currency to dollar rates
             targetToDollarRate = rates[targetCurrency];

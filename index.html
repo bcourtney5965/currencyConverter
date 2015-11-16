@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-	    <!--Tools > Sublime Server >for Sublime Server  http://localhost:8080/       -->
-		<script src="http://livejs.com/live.js"></script>
-
 		<!-- Meta Tags -->
 		<meta charset="UTF-8">
 		<title>Brandon's Currency Converter</title>
@@ -21,16 +18,15 @@
 			<h1 id="title">Currency Converter</h1>
 
 			<form>
+				<select id="startCur" class="dropDownMenu"></select>
+				<select id="targetCur" class="dropDownMenu"></select>
+
 				<!-- Starting Currency -->
-				<div id="startingCurrency">
-					<input id="startingCurrencyText" class="textInput" type="text" />
-				</div>
+				<input id="startingCurrencyText" class="textInput" type="text" placeholder="Starting Currency Amount" />
 
 				<!-- Target Currency -->
-      			<div id="targetCurrency">
-					<label id="testingLabel"></label>
-				</div>
-
+				<label id="testingLabel"></label>
+				
 				<!-- Submit Button -->
 				<input type="submit" value="Convert!" />
 			</form>
